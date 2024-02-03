@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Token display system</title>
+  <script src="script.js"></script>
+</head>
+
+<body>
+
+    <div class="row">
+      <div class="col">
+        <button onclick="openSerialPort()">Open</button>           </div>
+      <div class="col" style="margin-top: 10px;">
+        <button onclick="closeSerialPort()">Close</button>          </div>
+    </div>
+  
+<h2>Token number</h2>
+  <div class="row">
+    <div class="col">
+        <input type="text" id="token_number" size="10">
+        <button onclick="updateTokenNumber()">Update</button> 
+    </div>
+  </div>
+  <div class="row" style="margin-top: 10px;">
+    <div class="col">
+        <button onclick="incrementTokenNumber()">Increase</button> 
+        <button onclick="decrementTokenNumber()">Decrease</button> 
+    </div>
+  </div>
+</body>
+
+</html>
