@@ -1,0 +1,36 @@
+services:
+  mysql:
+    image: mysql:8.4.3
+    container_name: mysql_db_8_4
+    environment:
+      MYSQL_ROOT_PASSWORD: root # this is not production ready config
+      MYSQL_DATABASE: icdev 
+      MYSQL_USER: user01
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306" # mysql port
+    volumes:
+      - mysql_data:/var/lib/mysql
+  redis:
+    image: redis/redis-stack:7.2.0-v13
+    container_name: redis_cache
+    ports:
+      - "6379:6379"  # redis port
+      - "8001:8001" # redis insight port
+    environment:
+      REDIS_ARGS: "--requirepass mypass" # not production ready
+    volumes:
+      - redis_data:/data
+volumes:
+  mysql_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/user/cnt/mysql-data # directory should be presnt already, if not create it mkdir -p ~/cnt/mysql-data && chmod -R 777 ~/cnt/mysql-data
+      o: bind
+  redis_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/user/cnt/redis-data # directory should be presnt already, if not create it mkdir -p ~/cnt/redis-data && chmod -R 777 ~/cnt/redis-data
+      o: bind
